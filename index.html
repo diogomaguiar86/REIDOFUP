@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="reidofup_logo.png" type="image/x-icon">
+
+  <title> &#x1F451; REI DO FUP &#x1F451; </title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <!-- Aqui você pode inserir o logotipo SVG ou imagem -->
+
+<!-- Logo Rei do FUP -->
+
+<a> <img src="reidofup_logo.png" width="25%"></a>
+
+
+    <h1 class="logo">&#x1F451; REI DO FUP &#128081; </h1>
+  </header>
+  <div class="container">
+    <form id="ticketForm">
+      <h2 style="text-align: center">  REGISTRAR </h2>
+      <input type="datetime-local" id="datetime" required placeholder="Data e Hora">
+      <input type="text" id="ticketNumber" maxlength="8" required placeholder="Número do Ticket">
+      <select id="status">
+        <option>ACIONANDO</option>
+        <option>PENDENTE</option>
+        <option>NORMALIZADO</option>
+      </select>
+      <input type="text" id="cliente" required placeholder="Cliente">
+      <textarea id="observacao" placeholder="Observação"></textarea>
+      <button type="submit">CADASTRAR</button>
+    </form>
+<br><br>
+    <h2 style="text-align: center;">BUSCAR CHAMADO</h2>
+    <input type="text" id="search" placeholder="Buscar...">
+
+    <table id="ticketsTable">
+      <thead>
+        <tr>
+          <th>Data/Hora</th>
+          <th>Ticket</th>
+          <th>Status</th>
+          <th>Cliente</th>
+          <th>Observação</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <br>
+  </div>
+  <br>
+  <script src="script.js"></script>
+
+  <footer class="footer">
+  <div class="footer-content">
+    <p>© 2025 <span class="highlight">Diogo Aguiar Desenvolvimentos - Todos os direitos reservados. </span></p>
+  </div>
+</footer>
+
+
+</body>
+
+
+</html>
