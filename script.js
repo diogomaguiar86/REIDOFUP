@@ -4,7 +4,7 @@ const searchInput = document.getElementById('search');
 
 let tickets = [];
 
-// 1⃣ Carrega tickets salvos assim que a página carregar
+// Carrega os tickets salvos ao carregar a página
 window.addEventListener('load', () => {
   const saved = localStorage.getItem('reiDoFupTickets');
   tickets = saved ? JSON.parse(saved) : [];
@@ -21,7 +21,7 @@ ticketForm.addEventListener('submit', e => {
     observacao: document.getElementById('observacao').value
   };
   tickets.push(ticket);
-  saveTickets(); // 2⃣ Salva no localStorage
+  saveTickets();
   ticketForm.reset();
   renderTable();
 });
@@ -32,11 +32,15 @@ function renderTable() {
   const term = searchInput.value.toLowerCase();
   ticketsTableBody.innerHTML = '';
 
+  // Ordena por data e hora
+  tickets.sort((a, b) => new Date(a.datetime) - new Date(b.datetime));
+
   tickets.forEach((t, index) => {
     if (Object.values(t).some(val => val.toLowerCase().includes(term))) {
+      const displayDate = formatDateTime(t.datetime);
       const row = document.createElement('tr');
       row.innerHTML = `
-        <td>${t.datetime}</td>
+        <td>${displayDate}</td>
         <td>${t.ticketNumber}</td>
         <td>${t.status}</td>
         <td>${t.cliente}</td>
@@ -51,6 +55,8 @@ function renderTable() {
   });
 }
 
+
+
 function saveTickets() {
   localStorage.setItem('reiDoFupTickets', JSON.stringify(tickets));
 }
@@ -64,12 +70,22 @@ window.editTicket = function(index) {
   document.getElementById('observacao').value = t.observacao;
 
   tickets.splice(index, 1);
-  saveTickets(); // 2⃣ Atualiza no localStorage
+  saveTickets();
   renderTable();
 };
 
+function formatDateTime(datetimeStr) {
+  const date = new Date(datetimeStr);
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  return `${day}/${month} ${hours}:${minutes}`;
+}
+
+
 window.deleteTicket = function(index) {
   tickets.splice(index, 1);
-  saveTickets(); // 2⃣ Atualiza no localStorage
+  saveTickets();
   renderTable();
 };

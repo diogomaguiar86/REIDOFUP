@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="reidofup_logo.png" type="image/x-icon">
+  
 
   <title> &#x1F451; REI DO FUP &#x1F451; </title>
   <link rel="stylesheet" href="styles.css">
@@ -21,18 +22,21 @@
   </header>
   <div class="container">
     <form id="ticketForm">
-      <h2 style="text-align: center">  REGISTRAR </h2>
+      <h2 style="text-align: center">REGISTRAR</h2>
       <input type="datetime-local" id="datetime" required placeholder="Data e Hora">
       <input type="text" id="ticketNumber" maxlength="8" required placeholder="Número do Ticket">
       <select id="status">
-        <option>ACIONANDO</option>
-        <option>PENDENTE</option>
-        <option>NORMALIZADO</option>
+        <option value="EM ACIONAMENTO">EM ACIONAMENTO</option>
+        <option value="PENDENTE CLIENTE">PENDENTE CLIENTE</option>
+        <option value="PENDENTE FORNECEDOR">PENDENTE FORNECEDOR</option>
+        <option value="PENDENTE ANALISTA">PENDENTE ANALISTA</option>
+        <option value="NORMALIZADO">NORMALIZADO</option>
       </select>
       <input type="text" id="cliente" required placeholder="Cliente">
       <textarea id="observacao" placeholder="Observação"></textarea>
       <button type="submit">CADASTRAR</button>
     </form>
+
 <br><br>
     <h2 style="text-align: center;">BUSCAR CHAMADO</h2>
     <input type="text" id="search" placeholder="Buscar...">
