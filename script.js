@@ -4,6 +4,13 @@ const searchInput = document.getElementById('search');
 
 let tickets = [];
 
+// 1⃣ Carrega tickets salvos assim que a página carregar
+window.addEventListener('load', () => {
+  const saved = localStorage.getItem('reiDoFupTickets');
+  tickets = saved ? JSON.parse(saved) : [];
+  renderTable();
+});
+
 ticketForm.addEventListener('submit', e => {
   e.preventDefault();
   const ticket = {
@@ -14,6 +21,7 @@ ticketForm.addEventListener('submit', e => {
     observacao: document.getElementById('observacao').value
   };
   tickets.push(ticket);
+  saveTickets(); // 2⃣ Salva no localStorage
   ticketForm.reset();
   renderTable();
 });
@@ -43,6 +51,10 @@ function renderTable() {
   });
 }
 
+function saveTickets() {
+  localStorage.setItem('reiDoFupTickets', JSON.stringify(tickets));
+}
+
 window.editTicket = function(index) {
   const t = tickets[index];
   document.getElementById('datetime').value = t.datetime;
@@ -52,10 +64,12 @@ window.editTicket = function(index) {
   document.getElementById('observacao').value = t.observacao;
 
   tickets.splice(index, 1);
+  saveTickets(); // 2⃣ Atualiza no localStorage
   renderTable();
 };
 
 window.deleteTicket = function(index) {
   tickets.splice(index, 1);
+  saveTickets(); // 2⃣ Atualiza no localStorage
   renderTable();
 };
