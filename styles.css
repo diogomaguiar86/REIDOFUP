@@ -2,7 +2,7 @@ body {
   background: linear-gradient(135deg, #1587e4 0%, #d120e9 100%);
   background-size: cover;
   background-attachment: fixed;
-  
+
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -26,10 +26,10 @@ header {
 .container {
   max-width: 1100px;
   background: linear-gradient(135deg, #1d4dd1 0%, #7e069c 100%);
+  color:#fff;
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
-
   width: 90%;
   margin: 0 auto;
 
@@ -84,7 +84,7 @@ th, td {
 }
 
 tr:hover {
-  background: #f4f1f4;
+  background: #5f135f;
 }
 
 .action-btn {
